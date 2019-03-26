@@ -37,7 +37,7 @@
         <div class="headerCon">
             <h1 class="mallLogo">
                 <a href="#" title="母婴商城"> <!-- <img src="${ctx}/resources/ccpt_5_bbh/res/static/img/logo.png"> -->
-                    <h3>社区在线生活服务</h3>
+                    <h3>社区</h3>
                 </a>
             </h1>
             <div class="mallSearch">
