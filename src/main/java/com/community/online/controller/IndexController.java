@@ -3,6 +3,8 @@ package com.community.online.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.http.HttpServletRequest;
+
 @Controller
 @RequestMapping("/")
 public class IndexController {
@@ -30,5 +32,11 @@ public class IndexController {
 	@RequestMapping("login")
 	public String login() {
 		return "login";
+	}
+
+	@RequestMapping("logout")
+	public String logout(HttpServletRequest request) {
+		request.getSession().invalidate();
+		return "redirect:/";
 	}
 }

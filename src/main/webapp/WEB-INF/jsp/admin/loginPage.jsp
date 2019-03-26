@@ -21,7 +21,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="/">题库生成系统</a>
+                <a class="navbar-brand" href="/">社区管理系统</a>
             </div>
         </div><!-- /.container-fluid -->
     </nav>

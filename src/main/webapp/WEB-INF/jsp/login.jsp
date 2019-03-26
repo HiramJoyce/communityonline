@@ -21,12 +21,19 @@
 	<div class="site-nav-bg">
 		<div class="site-nav w1200">
 			<p class="sn-back-home">
-				<i class="layui-icon layui-icon-home"></i> <a href="#">首页</a>
+				<i class="layui-icon layui-icon-home"></i> <a href="${ctx}/">首页</a>
 			</p>
 			<div class="sn-quick-menu">
-				<div class="login">
-					<a href="${ctx}/login">登录</a>
-				</div>
+                <c:if test="${sessionScope.id == null}">
+                    <div class="login">
+                        <a href="${ctx}/login">登录</a>
+                    </div>
+                </c:if>
+                <c:if test="${sessionScope.id != null}">
+                    <div class="login">
+                        <a href="${ctx}/logout">${sessionScope.realName}</a>
+                    </div>
+                </c:if>
 			</div>
 		</div>
 	</div>
@@ -35,7 +42,7 @@
 		<div class="headerLayout w1200">
 			<div class="headerCon">
 				<h1 class="mallLogo">
-					<a href="#" title="母婴商城"> <!-- <img src="${ctx}/resource/ccpt_5_bbh/res/static/img/logo.png"> -->
+					<a href="#" title=""> <!-- <img src="${ctx}/resource/ccpt_5_bbh/res/static/img/logo.png"> -->
 						<h3>社区</h3>
 					</a>
 				</h1>
@@ -66,30 +73,37 @@
 		<div class="login-bg">
 			<div class="login-cont w1200">
 				<div class="form-box">
-					<form class="layui-form" action="">
-						<legend>手机号登录</legend>
+					<form class="layui-form" action="${ctx}/studentLogin">
+						<legend>用户名登录</legend>
 						<div class="layui-form-item">
 							<div class="layui-inline iphone">
 								<div class="layui-input-inline">
-									<i class="layui-icon layui-icon-cellphone iphone-icon"></i> <input
-										type="tel" name="phone" id="phone" lay-verify="required|phone"
-										placeholder="请输入手机号" autocomplete="off" class="layui-input">
+									<i class="layui-icon layui-icon-username iphone-icon"></i> <input
+										type="tel" name="userName" id="phone" lay-verify="required"
+										placeholder="请输入用户名" autocomplete="off" class="layui-input">
 								</div>
 							</div>
-							<div class="layui-inline veri-code">
+							<div class="layui-inline iphone">
 								<div class="layui-input-inline">
-									<input id="pnum" type="text" name="pnum" lay-verify="required"
-										placeholder="请输入验证码" autocomplete="off" class="layui-input">
-									<input type="button" class="layui-btn" id="find" value="验证码" />
+                                    <i class="layui-icon layui-icon-username iphone-icon"></i> <input
+                                        id="pnum" type="password" name="password" lay-verify="required"
+										placeholder="请输入密码" autocomplete="off" class="layui-input">
 								</div>
 							</div>
 						</div>
 						<div class="layui-form-item login-btn">
 							<div class="layui-input-block">
 								<button class="layui-btn" lay-submit="" lay-filter="demo1"
-									onclick="return false">登录</button>
+									type="submit">登录</button>
 							</div>
 						</div>
+                        <div class="layui-form-item login-btn">
+                            <div class="layui-input-block" style="text-align: center;">
+                                <a href="${ctx}/admin/login">我是管理员</a>
+                                <a href="${ctx}/waiter/login">我是服务人员</a>
+                                <a href="${ctx}/shop/login">我是便利店</a>
+                            </div>
+                        </div>
 					</form>
 				</div>
 			</div>

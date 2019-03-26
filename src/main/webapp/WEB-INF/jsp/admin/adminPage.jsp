@@ -56,7 +56,7 @@
         <div style="margin: auto; text-align: center;">
             <button class="btn btn-link" style="color: #FFFFFF; margin-top: 10px;" href="javascript:" onclick="formSubmit('/studentsPage','mframe');this.blur();">用户管理</button>
             <button class="btn btn-link" style="color: #FFFFFF;" href="javascript:" onclick="formSubmit('/waitersPage','mframe');this.blur();">服务人员管理</button>
-            <button class="btn btn-link" style="color: #FFFFFF;" href="javascript:" onclick="formSubmit('/studentsPage','mframe');this.blur();">信息管理</button>
+            <button class="btn btn-link" style="color: #FFFFFF;" href="javascript:" onclick="formSubmit('/servicesPage','mframe');this.blur();">信息管理</button>
         </div>
     </div>
     <div style="margin-left: 150px; height: 100%; margin-top: -50px; padding-top: 50px;">

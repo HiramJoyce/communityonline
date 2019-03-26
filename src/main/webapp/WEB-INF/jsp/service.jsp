@@ -17,12 +17,19 @@
 <div class="site-nav-bg">
     <div class="site-nav w1200">
         <p class="sn-back-home">
-            <i class="layui-icon layui-icon-home"></i> <a href="#">首页</a>
+            <i class="layui-icon layui-icon-home"></i> <a href="${ctx}/">首页</a>
         </p>
         <div class="sn-quick-menu">
-            <div class="login">
-                <a href="${ctx}/login">登录</a>
-            </div>
+            <c:if test="${sessionScope.id == null}">
+                <div class="login">
+                    <a href="${ctx}/login">登录</a>
+                </div>
+            </c:if>
+            <c:if test="${sessionScope.id != null}">
+                <div class="login">
+                    <a href="${ctx}/logout">${sessionScope.realName}</a>
+                </div>
+            </c:if>
         </div>
     </div>
 </div>
@@ -61,44 +68,52 @@
         </div>
     </div>
     <div>
-        <div
-                style="height: 600px; width: 600px; margin: auto; padding: 20px;">
-            <div class="layui-form-item layui-form-text">
-                <label class="layui-form-label">服务说明</label>
-                <div class="layui-input-block">
-                    <textarea placeholder="请输入内容" class="layui-textarea"></textarea>
-                </div>
-            </div>
-            <div class="layui-form">
+        <div style="height: 600px; width: 600px; margin: auto; padding: 20px;">
+            <form action="${ctx}/serviceCreate" method="post">
                 <div class="layui-form-item">
-                    <div class="layui-inline">
-                        <label class="layui-form-label">预约时间</label>
-                        <div class="layui-input-inline">
-                            <input type="text" class="layui-input" id="test1" placeholder="yyyy-MM-dd">
+                    <label class="layui-form-label">标题</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="title" required lay-verify="required" placeholder="请输入标题"
+                               autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item layui-form-text">
+                    <label class="layui-form-label">服务说明</label>
+                    <div class="layui-input-block">
+                        <textarea placeholder="请输入内容" name="content" class="layui-textarea"></textarea>
+                    </div>
+                </div>
+                <div class="layui-form">
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">预约时间</label>
+                            <div class="layui-input-inline">
+                                <input type="text" class="layui-input" name="time" id="test1" placeholder="yyyy-MM-dd">
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="layui-form-item">
-                <label class="layui-form-label">预约地点</label>
-                <div class="layui-input-block">
-                    <input type="text" name="title" required lay-verify="required" placeholder="请输入预约地点"
-                           autocomplete="off" class="layui-input">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">预约地点</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="place" required lay-verify="required" placeholder="请输入预约地点"
+                               autocomplete="off" class="layui-input">
+                    </div>
                 </div>
-            </div>
-            <div class="layui-form-item">
-                <label class="layui-form-label">价格</label>
-                <div class="layui-input-block">
-                    <input type="text" name="title" required lay-verify="required" placeholder="请输入价格"
-                           autocomplete="off" class="layui-input">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">价格</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="price" required lay-verify="required" placeholder="请输入价格"
+                               autocomplete="off" class="layui-input">
+                    </div>
                 </div>
-            </div>
-            <div class="layui-form-item">
-                <div class="layui-input-block">
-                    <button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
-                    <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                <div class="layui-form-item">
+                    <div class="layui-input-block">
+                        <button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
+                        <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                    </div>
                 </div>
-            </div>
+            </form>
         </div>
     </div>
 </div>

@@ -28,7 +28,7 @@ public class StudentController {
 //        model.addAttribute("papers", allPapers);
         if (student == null) {
             model.addAttribute("error","用户名或密码错误");
-            return "index";
+            return "login";
         }
         request.getSession().setAttribute("id", student.getId());
         request.getSession().setAttribute("realName", student.getRealName());

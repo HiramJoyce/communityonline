@@ -20,20 +20,31 @@ public class WaiterController {
     @Autowired
     private WaiterService studentService;
 
-    @RequestMapping("/waiterLogin")
+    @RequestMapping("/waiter/loginPage")
+    public String waiterLoginPage() {
+        return "waiter/loginPage";
+    }
+
+    @RequestMapping("/waiter/login")
+    public String waiterLogin() {
+        return "waiter/loginPage";
+    }
+
+    @RequestMapping(value = "/waiterLogin", method = RequestMethod.POST)
     public String studentLogin(String userName, String password, Model model, HttpServletRequest request) {
-        System.out.println("-> student login : " + userName + " - " + password);
+        System.out.println("-> waiter login : " + userName + " - " + password);
         Waiter student = studentService.login(userName, password);
+        System.out.println(student);
 //        List<Paper> allPapers = paperService.getAllPapers();
 //        model.addAttribute("papers", allPapers);
         if (student == null) {
             model.addAttribute("error","用户名或密码错误");
-            return "index";
+            return "redirect:/waiter/login";
         }
         request.getSession().setAttribute("id", student.getId());
         request.getSession().setAttribute("realName", student.getRealName());
-        request.getSession().setAttribute("role", "student");
-        return "redirect:/";
+        request.getSession().setAttribute("role", "waiter");
+        return "waiter/waiterPage";
     }
 
     @RequestMapping("/waiterRegister")

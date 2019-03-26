@@ -21,12 +21,19 @@
 	<div class="site-nav-bg">
 		<div class="site-nav w1200">
 			<p class="sn-back-home">
-				<i class="layui-icon layui-icon-home"></i> <a href="#">首页</a>
+				<i class="layui-icon layui-icon-home"></i> <a href="${ctx}/">首页</a>
 			</p>
 			<div class="sn-quick-menu">
-				<div class="login">
-					<a href="${ctx}/login">登录</a>
-				</div>
+				<c:if test="${sessionScope.id == null}">
+					<div class="login">
+						<a href="${ctx}/login">登录</a>
+					</div>
+				</c:if>
+				<c:if test="${sessionScope.id != null}">
+					<div class="login">
+						<a href="${ctx}/logout">${sessionScope.realName}</a>
+					</div>
+				</c:if>
 			</div>
 		</div>
 	</div>
