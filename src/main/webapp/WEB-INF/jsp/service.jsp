@@ -7,8 +7,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Document</title>
-    <link rel="stylesheet" type="text/css" href="${ctx}/resources/ccpt_5_bbh/res/static/css/main.css">
-    <link rel="stylesheet" type="text/css" href="${ctx}/resources/ccpt_5_bbh/res/layui/css/layui.css">
+    <link rel="stylesheet" type="text/css" href="${ctx}/resource/ccpt_5_bbh/res/static/css/main.css">
+    <link rel="stylesheet" type="text/css" href="${ctx}/resource/ccpt_5_bbh/res/layui/css/layui.css">
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
@@ -31,7 +31,7 @@
     <div class="headerLayout w1200">
         <div class="headerCon">
             <h1 class="mallLogo">
-                <a href="#" title="母婴商城"> <!-- <img src="${ctx}/resources/ccpt_5_bbh/res/static/img/logo.png"> -->
+                <a href="#" title="母婴商城"> <!-- <img src="${ctx}/resource/ccpt_5_bbh/res/static/img/logo.png"> -->
                     <h3>社区</h3>
                 </a>
             </h1>
@@ -112,7 +112,7 @@
         </p>
     </div>
 </div>
-<script src="${ctx}/resources/ccpt_5_bbh/res/layui/layui.all.js"></script>
+<script src="${ctx}/resource/ccpt_5_bbh/res/layui/layui.all.js"></script>
 <script>
     layui.use('laydate', function () {
         var laydate = layui.laydate;

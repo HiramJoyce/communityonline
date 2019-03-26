@@ -8,11 +8,11 @@
 <meta charset="UTF-8">
 <title>Document</title>
 <link rel="stylesheet" type="text/css"
-	href="${ctx}/resources/ccpt_5_bbh/res/static/css/main.css">
+	href="${ctx}/resource/ccpt_5_bbh/res/static/css/main.css">
 <link rel="stylesheet" type="text/css"
-	href="${ctx}/resources/ccpt_5_bbh/res/layui/css/layui.css">
+	href="${ctx}/resource/ccpt_5_bbh/res/layui/css/layui.css">
 <script type="text/javascript"
-	src="${ctx}/resources/ccpt_5_bbh/res/layui/layui.js"></script>
+	src="${ctx}/resource/ccpt_5_bbh/res/layui/layui.js"></script>
 <meta name="viewport"
 	content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
 <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
@@ -36,7 +36,7 @@
 		<div class="headerLayout w1200">
 			<div class="headerCon">
 				<h1 class="mallLogo">
-					<a href="#" title="母婴商城"> <!-- <img src="${ctx}/resources/ccpt_5_bbh/res/static/img/logo.png"> -->
+					<a href="#" title="母婴商城"> <!-- <img src="${ctx}/resource/ccpt_5_bbh/res/static/img/logo.png"> -->
 						<h3>社区</h3>
 					</a>
 				</h1>
@@ -94,7 +94,7 @@
 	</div>
 	<script type="text/javascript">
 		layui.config({
-			base : '${ctx}/resources/ccpt_5_bbh/res/static/js/util/' //你存放新模块的目录，注意，不是layui的模块目录
+			base : '${ctx}/resource/ccpt_5_bbh/res/static/js/util/' //你存放新模块的目录，注意，不是layui的模块目录
 		}).use([ 'mm', 'carousel' ], function() {
 			var carousel = layui.carousel, mm = layui.mm;
 			var option = {
@@ -112,7 +112,7 @@
 			// var listCont = document.getElementById('list-cont');
 			// // console.log(layui.router("#/about.html"))
 			//  mm.request({
-			//    url: '${ctx}/resources/ccpt_5_bbh/json/index.json',
+			//    url: '${ctx}/resource/ccpt_5_bbh/json/index.json',
 			//    success : function(res){
 			//      console.log(res)
 			//      listCont.innerHTML = mm.renderHtml(html,res)
