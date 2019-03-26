@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.community.online.dao.ServiceDao">
+    <resultMap id="adminMap" type="com.community.online.domain.Service">
+        <result column="id" property="id"/>
+        <result column="student_id" property="studentId"/>
+        <result column="waiter_id" property="waiterId"/>
+        <result column="title" property="title"/>
+        <result column="content" property="content"/>
+        <result column="time" property="time"/>
+        <result column="price" property="price"/>
+        <result column="place" property="place"/>
+        <result column="state" property="state"/>
+        <result column="reply" property="reply"/>
+        <result column="danger" property="danger"/>
+    </resultMap>
+    <sql id="base_column">
+        id, student_id, waiter_id, title, content, time, price, place, state, reply, danger
+    </sql>
+    <select id="selectServiceByState" resultMap="adminMap">
+        select <include refid="base_column"/> from service where state=#{state};
+    </select>
+    <select id="selectServiceByWaiterIdState" resultMap="adminMap">
+        select <include refid="base_column"/> from service where state=#{state} and waiter_id=#{waiterId};
+    </select>
+    <select id="selectServiceById" resultMap="adminMap">
+        select <include refid="base_column"/> from  service where id=#{id};
+    </select>
+    <insert id="insertService" parameterType="com.community.online.domain.Service">
+        insert into service(<include refid="base_column"/>)values (
+        #{id},
+        #{studentId},
+        #{waiterId},
+        #{title},
+        #{content},
+        #{time},
+        #{price},
+        #{place},
+        #{state},
+        #{reply},
+        #{danger}
+        );
+    </insert>
+    <delete id="deleteServiceById">
+        delete from service where id=#{id};
+    </delete>
+    <update id="updateService" parameterType="com.community.online.domain.Service">
+        update service set
+        id=#{id},
+        student_id=#{studentId},
+        waiter_id=#{waiterId},
+        title=#{title},
+        content=#{content},
+        time=#{time},
+        price=#{price},
+        place=#{place},
+        state=#{state},
+        reply=#{reply},
+        danger=#{danger}
+        where id=#{id}
+    </update>
+</mapper>
