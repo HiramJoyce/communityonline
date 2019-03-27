@@ -48,7 +48,7 @@
                 <c:forEach items="${goods}" var="good">
                     <tr align="center">
                         <td><input type="checkbox" name="id" value="${good.id}"/></td>
-                        <td><img src="${ctx}/resource/upload/${good.img}" style="width: 64px; height: 64px;" alt="">
+                        <td><img src="${ctx}/resource/uploadImg/${good.img}" style="width: 64px; height: 64px;" alt="">
                         </td>
                         <td>${good.name}</td>
                         <td>${good.price}</td>

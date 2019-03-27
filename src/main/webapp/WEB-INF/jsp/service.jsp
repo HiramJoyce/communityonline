@@ -34,6 +34,7 @@
             <c:if test="${sessionScope.id != null}">
                 <div class="login">
                     <a href="${ctx}/logout">${sessionScope.realName}</a>
+                    <a href="${ctx}/car">购物车</a>
                 </div>
             </c:if>
         </div>
@@ -74,7 +75,7 @@
         </div>
     </div>
     <div>
-        <div style="height: 600px; width: 600px; margin: auto; padding: 20px;">
+        <div style="min-height: 600px; width: 600px; margin: auto; padding: 20px;">
             <form action="${ctx}/serviceCreate" method="post">
                 <div class="layui-form-item">
                     <label class="layui-form-label">标题</label>

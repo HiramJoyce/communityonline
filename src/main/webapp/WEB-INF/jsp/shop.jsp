@@ -32,6 +32,7 @@
             <c:if test="${sessionScope.id != null}">
                 <div class="login">
                     <a href="${ctx}/logout">${sessionScope.realName}</a>
+                    <a href="${ctx}/car">购物车</a>
                 </div>
             </c:if>
         </div>
@@ -88,9 +89,9 @@
             <div class="product-item-box layui-clear">
                 <c:forEach items="${goods}" var="good">
                     <div class="list-item">
-                        <a href="javascript:;"><img
-                                src="${ctx}/resource/upload/${good.img}" style="width: 160px; height: 160px; padding: 25px 0;"></a>
-                        <p>${good.name}</p>
+                        <a href="${ctx}/goodInfo?id=${good.id}"><img
+                                src="${ctx}/resource/uploadImg/${good.img}" style="width: 160px; height: 160px; padding: 25px 0;"></a>
+                        <p><a href="${ctx}/goodInfo?id=${good.id}">${good.name}</a></p>
                         <span>￥${good.price}</span>
                     </div>
                 </c:forEach>
