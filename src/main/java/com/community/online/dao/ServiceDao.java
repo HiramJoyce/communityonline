@@ -20,4 +20,6 @@ public interface ServiceDao {
     int updateService(Service service);
 
     List<Service> selectServiceByWaiterIdState(@Param("waiterId") String waiterId, @Param("state") String state);
+
+    List<Service> selectServicesByStudentId(String studentId);
 }

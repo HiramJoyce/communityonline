@@ -26,6 +26,9 @@ public class ServiceController {
 
     @RequestMapping("/serviceCreate")
     public String serviceCreate(String title, String content, String time, String price, String place, Model model, HttpServletRequest request) throws ParseException {
+        if (request.getSession().getAttribute("id") == null || request.getSession().getAttribute("id").equals("")) {
+            return "login";
+        }
         Service service = new Service();
         service.setId(UUID.randomUUID().toString().replaceAll("-", ""));
         service.setStudentId((String) request.getSession().getAttribute("id"));

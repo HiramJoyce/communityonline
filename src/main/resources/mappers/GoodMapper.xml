@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.community.online.dao.GoodDao">
+    <resultMap id="studentMap" type="com.community.online.domain.Good">
+        <result column="id" property="id"/>
+        <result column="name" property="name"/>
+        <result column="price" property="price"/>
+        <result column="img" property="img"/>
+    </resultMap>
+    <sql id="base_column">
+        id, name, price, img
+    </sql>
+    <select id="selectAllGoods" resultMap="studentMap">
+        select <include refid="base_column"/> from good;
+    </select>
+    <select id="selectGoodById" resultMap="studentMap">
+        select <include refid="base_column"/> from good where id=#{id};
+    </select>
+    <insert id="insertGood" parameterType="com.community.online.domain.Good">
+        INSERT INTO good (<include refid="base_column"/>) VALUES (#{id}, #{name}, #{price}, #{img})
+    </insert>
+    <delete id="deleteGood">
+        delete from good where id=#{id};
+    </delete>
+    <update id="updateGood" parameterType="com.community.online.domain.Good">
+        update good set name=#{name}, price=#{price}, img=#{img} where id=#{id};
+    </update>
+</mapper>

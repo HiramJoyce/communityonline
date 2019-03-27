@@ -17,4 +17,6 @@ public interface ServiceService {
 	Service updateService(Service service);
 
 	void deleteService(String id1);
+
+    List<Service> getServiceByStudentId(String studentId);
 }

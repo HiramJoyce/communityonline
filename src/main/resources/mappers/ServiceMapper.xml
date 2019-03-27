@@ -26,7 +26,10 @@
         select <include refid="base_column"/> from service where state=#{state} and waiter_id=#{waiterId};
     </select>
     <select id="selectServiceById" resultMap="adminMap">
-        select <include refid="base_column"/> from  service where id=#{id};
+        select <include refid="base_column"/> from service where id=#{id};
+    </select>
+    <select id="selectServicesByStudentId" resultMap="adminMap">
+        select <include refid="base_column"/> from service where student_id=#{studentId};
     </select>
     <insert id="insertService" parameterType="com.community.online.domain.Service">
         insert into service(<include refid="base_column"/>)values (

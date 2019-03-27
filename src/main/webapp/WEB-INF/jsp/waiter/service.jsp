@@ -57,7 +57,7 @@
                            autocomplete="off" class="layui-input">
                 </div>
             </div>
-            <c:if test="${service.state == '2'}">
+            <c:if test="${service.state == '2' && sessionScope.role == 'shop'}">
                 <div class="layui-form-item layui-form-text">
                     <label class="layui-form-label">结果</label>
                     <div class="layui-input-block">

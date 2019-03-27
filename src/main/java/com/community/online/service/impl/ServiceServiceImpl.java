@@ -41,4 +41,9 @@ public class ServiceServiceImpl implements ServiceService {
     public void deleteService(String id) {
         serviceDao.deleteServiceById(id);
     }
+
+    @Override
+    public List<Service> getServiceByStudentId(String studentId) {
+        return serviceDao.selectServicesByStudentId(studentId);
+    }
 }

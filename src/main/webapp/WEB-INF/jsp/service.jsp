@@ -9,6 +9,12 @@
     <title>Document</title>
     <link rel="stylesheet" type="text/css" href="${ctx}/resource/ccpt_5_bbh/res/static/css/main.css">
     <link rel="stylesheet" type="text/css" href="${ctx}/resource/ccpt_5_bbh/res/layui/css/layui.css">
+    <link type="text/css" rel="stylesheet" href="${ctx}/resource/bootstrap-3.3.7-dist/css/bootstrap.min.css"/>
+    <style type="text/css">
+        .layui-form-label {
+            width: 100px;
+        }
+    </style>
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
@@ -38,7 +44,7 @@
     <div class="headerLayout w1200">
         <div class="headerCon">
             <h1 class="mallLogo">
-                <a href="#" title="母婴商城"> <!-- <img src="${ctx}/resource/ccpt_5_bbh/res/static/img/logo.png"> -->
+                <a href="#" title=""> <!-- <img src="${ctx}/resource/ccpt_5_bbh/res/static/img/logo.png"> -->
                     <h3>社区</h3>
                 </a>
             </h1>
@@ -87,7 +93,7 @@
                     <div class="layui-form-item">
                         <div class="layui-inline">
                             <label class="layui-form-label">预约时间</label>
-                            <div class="layui-input-inline">
+                            <div class="layui-input-inline" style="margin: 10px;">
                                 <input type="text" class="layui-input" name="time" id="test1" placeholder="yyyy-MM-dd">
                             </div>
                         </div>
@@ -114,6 +120,31 @@
                     </div>
                 </div>
             </form>
+            <h3>我的预约订单</h3>
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th class="node">标题</th>
+                    <th class="process">时间</th>
+                    <th class="process">地点</th>
+                    <th class="process">价格</th>
+                    <th class="process">状态</th>
+                </tr>
+                </thead>
+                <tbody align="center">
+                <c:forEach items="${services}" var="student">
+                    <tr align="center">
+                        <td><a href="${ctx}/finishService?id=${student.id}">${student.title}</a></td>
+                        <td><fmt:formatDate value="${student.time}" pattern="yyyy-MM-dd"/></td>
+                        <td>${student.place}</td>
+                        <td>${student.price}</td>
+                        <td class="operate">
+                            ${student.state == "0" ? "待审核" : student.state == "1" ? "待服务人员接单" : student.state == "2" ? "已接单" : "处理完成"}
+                        </td>
+                    </tr>
+                </c:forEach>
+                </tbody>
+            </table>
         </div>
     </div>
 </div>
