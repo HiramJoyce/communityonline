@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.community.online.dao.ComplaintDao">
+    <resultMap id="complaintMap" type="com.community.online.domain.Complaint">
+        <result column="id" property="id"/>
+        <result column="content" property="content"/>
+        <result column="parent_id" property="parentId"/>
+        <result column="user_id" property="userId"/>
+        <result column="img" property="img"/>
+        <result column="create_time" property="createTime" javaType="java.util.Date" jdbcType="TIMESTAMP"/>
+    </resultMap>
+    <resultMap id="complaintDtoMap" type="com.community.online.domain.dto.ComplaintDto">
+        <result column="id" property="id"/>
+        <result column="real_name" property="realName"/>
+        <result column="user_id" property="userId"/>
+        <result column="content" property="content"/>
+        <result column="img" property="img"/>
+        <result column="parent_id" property="parentId"/>
+        <result column="create_time" property="createTime" javaType="java.util.Date" jdbcType="TIMESTAMP"/>
+    </resultMap>
+    <sql id="base_column">
+        id, content, parent_id, user_id, img, create_time
+    </sql>
+    <select id="selectComplaintsByComplaintId" resultMap="complaintMap">
+        select <include refid="base_column"/> from complaint where parent_id=#{complaintId} order by create_time;
+    </select>
+    <select id="selectComplaintDtosByComplaintId" resultMap="complaintDtoMap">
+        select c.id, content, parent_id, user_id, u.real_name, img, c.create_time from complaint c, student u where parent_id=#{complaintId} and c.user_id=u.id order by create_time;
+    </select>
+    <select id="selectComplaintsParent" resultMap="complaintMap">
+        select <include refid="base_column"/> from complaint where parent_id is null order by create_time;
+    </select>
+    <select id="selectComplaintByComplaintId" resultMap="complaintMap">
+        select <include refid="base_column"/> from complaint where id=#{id};
+    </select>
+    <select id="selectComplaintsByUserId" resultMap="complaintMap">
+        select <include refid="base_column"/> from complaint where user_id=#{userId} and parent_id is null;
+    </select>
+    <!--<select id="selectEvaluateDtosByProgrammeId" resultMap="complaintMap">-->
+        <!--select u.nick_name, e.create_time, e.rate, e.`comment` from evaluate e, user u where programme_id=#{programmeId} and e.user_id=u.id;-->
+    <!--</select>-->
+    <insert id="insertComplaint" parameterType="com.community.online.domain.Complaint">
+        insert into complaint(<include refid="base_column"/>) values (
+        #{id}, #{content}, #{parentId}, #{userId}, #{img}, #{createTime}
+        );
+    </insert>
+    <delete id="deleteComplaint">
+        delete from complaint where id=#{id}
+    </delete>
+    <delete id="deleteComplaintsByComplaintId">
+        delete from complaint where parent_id=#{complaintId}
+    </delete>
+</mapper>

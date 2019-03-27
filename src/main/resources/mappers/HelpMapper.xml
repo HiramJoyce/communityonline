@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.community.online.dao.HelpDao">
+    <resultMap id="helpMap" type="com.community.online.domain.Help">
+        <result column="id" property="id"/>
+        <result column="title" property="title"/>
+        <result column="content" property="content"/>
+        <result column="parent_id" property="parentId"/>
+        <result column="user_id" property="userId"/>
+        <result column="img" property="img"/>
+        <result column="create_time" property="createTime" javaType="java.util.Date" jdbcType="TIMESTAMP"/>
+    </resultMap>
+    <resultMap id="helpDtoMap" type="com.community.online.domain.dto.HelpDto">
+        <result column="id" property="id"/>
+        <result column="real_name" property="realName"/>
+        <result column="user_id" property="userId"/>
+        <result column="title" property="title"/>
+        <result column="content" property="content"/>
+        <result column="img" property="img"/>
+        <result column="parent_id" property="parentId"/>
+        <result column="create_time" property="createTime" javaType="java.util.Date" jdbcType="TIMESTAMP"/>
+    </resultMap>
+    <sql id="base_column">
+        id, title, content, parent_id, user_id, img, create_time
+    </sql>
+    <select id="selectComplaintsByComplaintId" resultMap="helpMap">
+        select <include refid="base_column"/> from help where parent_id=#{complaintId} order by create_time;
+    </select>
+    <select id="selectComplaintDtosByComplaintId" resultMap="helpDtoMap">
+        select c.id, content, parent_id, user_id, u.real_name, img, c.create_time from help c, student u where parent_id=#{complaintId} and c.user_id=u.id order by create_time;
+    </select>
+    <select id="selectComplaintDtosParent" resultMap="helpDtoMap">
+        select h.id id, real_name, user_id, title, content, parent_id, img, create_time from help h, student u where parent_id is null and h.user_id=u.id order by create_time;
+    </select>
+    <select id="selectComplaintByComplaintId" resultMap="helpMap">
+        select <include refid="base_column"/> from help where id=#{id};
+    </select>
+    <select id="selectComplaintsByUserId" resultMap="helpMap">
+        select <include refid="base_column"/> from help where user_id=#{userId} and parent_id is null;
+    </select>
+    <!--<select id="selectEvaluateDtosByProgrammeId" resultMap="complaintMap">-->
+        <!--select u.nick_name, e.create_time, e.rate, e.`comment` from evaluate e, user u where programme_id=#{programmeId} and e.user_id=u.id;-->
+    <!--</select>-->
+    <insert id="insertComplaint" parameterType="com.community.online.domain.Help">
+        insert into help(<include refid="base_column"/>) values (
+        #{id}, #{title}, #{content}, #{parentId}, #{userId}, #{img}, #{createTime}
+        );
+    </insert>
+    <delete id="deleteComplaint">
+        delete from help where id=#{id}
+    </delete>
+    <delete id="deleteComplaintsByComplaintId">
+        delete from help where parent_id=#{complaintId}
+    </delete>
+</mapper>
