@@ -11,12 +11,6 @@
           href="${ctx}/resource/ccpt_5_bbh/res/static/css/main.css">
     <link rel="stylesheet" type="text/css"
           href="${ctx}/resource/ccpt_5_bbh/res/layui/css/layui.css">
-    <link type="text/css" rel="stylesheet" href="${ctx}/resource/bootstrap-3.3.7-dist/css/bootstrap.min.css"/>
-    <style type="text/css">
-        .layui-form-label {
-            width: 100px;
-        }
-    </style>
     <script type="text/javascript"
             src="${ctx}/resource/ccpt_5_bbh/res/layui/layui.js"></script>
     <meta name="viewport"
@@ -80,13 +74,18 @@
     </div>
 
     <div>
-        <div style="min-height: 600px; width: 600px; margin: auto; padding: 20px;">
+        <div style="min-height: 600px; width: 800px; margin: auto; padding: 20px;">
             <h3>我的购物车</h3>
             <form id="allStudents" action="${ctx}/createTrade" method="post">
                 <div style="margin-bottom: 10px;">
-                    <button class="btn btn-danger" onclick="window.location.href='${ctx}/deleteCar'" type="button">清空</button>
+                    <button class="layui-btn layui-btn-danger layui-btn-sm" onclick="window.location.href='${ctx}/deleteCar'" type="button">清空</button>
                 </div>
-                <table class="table table-bordered">
+                <table class="layui-table">
+                    <colgroup>
+                        <col>
+                        <col width="200">
+                        <col>
+                    </colgroup>
                     <thead>
                     <tr>
                         <th class="num"></th>
@@ -97,7 +96,7 @@
                         <th class="operate">操作</th>
                     </tr>
                     </thead>
-                    <tbody align="center">
+                    <tbody>
                     <c:forEach items="${goods}" var="good" varStatus="statu">
                         <tr align="center">
                             <td><input type="checkbox" name="id" value="${good.id}"/></td>
@@ -115,7 +114,7 @@
                 <div class="layui-form-item">
                     <label class="layui-form-label">总价:</label>
                     <div class="layui-input-block">
-                        <input type="text" name="place" required lay-verify="required" placeholder="请输入配送地址"
+                        <input type="text" name="totalPrice" required lay-verify="required" placeholder="请输入配送地址"
                                autocomplete="off" readonly value="${totalPrice}" class="layui-input">
                     </div>
                 </div>

@@ -54,12 +54,12 @@
 </nav>
     <div style="width: 150px; background: #718093; float: left; height: 100%; margin-top: -50px; padding-top: 50px;">
         <div style="margin: auto; text-align: center;">
-            <button class="btn btn-link" style="color: #FFFFFF;" href="javascript:" onclick="formSubmit('${ctx}/servicesPage1','mframe');this.blur();">订单管理</button>
+            <button class="btn btn-link" style="color: #FFFFFF;" href="javascript:" onclick="formSubmit('${ctx}/tradesPage','mframe');this.blur();">订单管理</button>
             <button class="btn btn-link" style="color: #FFFFFF;" href="javascript:" onclick="formSubmit('${ctx}/goodsPage','mframe');this.blur();">商品管理</button>
         </div>
     </div>
     <div style="margin-left: 150px; height: 100%; margin-top: -50px; padding-top: 50px;">
-        <iframe name="mframe" id="mframe" width="100%" src="${ctx}/goodsPage" style="height: 100%;" frameborder="0"></iframe>
+        <iframe name="mframe" id="mframe" width="100%" src="${ctx}/tradesPage" style="height: 100%;" frameborder="0"></iframe>
     </div>
     <div style="clear: both;"></div>
 </div>

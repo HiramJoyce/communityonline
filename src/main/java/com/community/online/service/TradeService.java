@@ -15,4 +15,10 @@ public interface TradeService {
     Trade getTradeById(String id);
 
     List<Trade> getAllTrades();
+
+    List<Trade> get0Trades();
+
+    int updateTrade(Trade trade);
+
+    int delete(String id1);
 }

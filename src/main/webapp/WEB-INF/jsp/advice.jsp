@@ -12,17 +12,11 @@
           href="${ctx}/resource/ccpt_5_bbh/res/static/css/main.css">
     <link rel="stylesheet" type="text/css"
           href="${ctx}/resource/ccpt_5_bbh/res/layui/css/layui.css">
-    <link type="text/css" rel="stylesheet" href="${ctx}/resource/bootstrap-3.3.7-dist/css/bootstrap.min.css"/>
     <script type="text/javascript"
             src="${ctx}/resource/ccpt_5_bbh/res/layui/layui.js"></script>
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-    <style type="text/css">
-        .layui-form-label {
-            width: 100px;
-        }
-    </style>
 </head>
 <body id="list-cont">
 <div class="site-nav-bg">
@@ -81,7 +75,7 @@
         </div>
     </div>
     <div>
-        <div style="min-height: 600px; width: 600px; margin: auto; padding: 20px;">
+        <div style="min-height: 600px; width: 800px; margin: auto; padding: 20px;">
             <form action="${ctx}/complaint/create" method="post" enctype="multipart/form-data">
                 <div class="layui-form-item layui-form-text">
                     <label class="layui-form-label">建议或意见</label>
@@ -91,7 +85,7 @@
                 </div>
                 <div class="layui-form-item layui-form-text">
                     <label class="layui-form-label">上传图片</label>
-                    <input type="file" name="img" style="padding-left: 10px;"/>
+                    <input type="file" name="img"/>
                 </div>
                 <div class="layui-form-item">
                     <div class="layui-input-block">
@@ -101,14 +95,18 @@
                 </div>
             </form>
             <h3>我的历史</h3>
-            <table class="table table-bordered">
+            <table class="layui-table">
+                <colgroup>
+                    <col>
+                    <col width="200">
+                </colgroup>
                 <thead>
                 <tr>
                     <th class="node">内容</th>
                     <th class="process">时间</th>
                 </tr>
                 </thead>
-                <tbody align="center">
+                <tbody>
                 <c:forEach items="${complaints}" var="complaint">
                     <tr align="center">
                         <td><a href="${ctx}/complaint/detail?id=${complaint.id}">${f:substring(complaint.content, 0 ,20)}...</a></td>

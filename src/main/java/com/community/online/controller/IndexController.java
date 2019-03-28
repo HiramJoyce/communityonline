@@ -2,10 +2,7 @@ package com.community.online.controller;
 
 import com.community.online.domain.*;
 import com.community.online.domain.dto.HelpDto;
-import com.community.online.service.ComplaintService;
-import com.community.online.service.GoodService;
-import com.community.online.service.HelpService;
-import com.community.online.service.ServiceService;
+import com.community.online.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -28,12 +25,16 @@ public class IndexController {
 	private ComplaintService complaintService;
     @Autowired
     private HelpService helpService;
+    @Autowired
+    private TradeService tradeService;
 
 	@RequestMapping("")
-	public String index(Model model) {
+	public String index(Model model, HttpSession session) {
 		List<Good> allGoods = goodService.getAllGoods();
 		model.addAttribute("goods", allGoods);
-		return "shop";
+        List<Trade> trades = tradeService.getUserTrades((String) session.getAttribute("id"));
+        model.addAttribute("trades", trades);
+        return "shop";
 	}
 	
 	@RequestMapping("service")

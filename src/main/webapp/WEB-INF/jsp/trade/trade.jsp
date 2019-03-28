@@ -11,7 +11,6 @@
           href="${ctx}/resource/ccpt_5_bbh/res/static/css/main.css">
     <link rel="stylesheet" type="text/css"
           href="${ctx}/resource/ccpt_5_bbh/res/layui/css/layui.css">
-    <link type="text/css" rel="stylesheet" href="${ctx}/resource/bootstrap-3.3.7-dist/css/bootstrap.min.css"/>
     <script type="text/javascript"
             src="${ctx}/resource/ccpt_5_bbh/res/layui/layui.js"></script>
     <meta name="viewport"
@@ -33,6 +32,7 @@
             <c:if test="${sessionScope.id != null}">
                 <div class="login">
                     <a href="${ctx}/logout">${sessionScope.realName}</a>
+                    <a href="${ctx}/car">购物车</a>
                 </div>
             </c:if>
         </div>
@@ -44,7 +44,7 @@
     <div class="headerLayout w1200">
         <div class="headerCon">
             <h1 class="mallLogo">
-                <a href="#" title="母婴商城"> <!-- <img src="${ctx}/resource/ccpt_5_bbh/res/static/img/logo.png"> -->
+                <a href="#" title=""> <!-- <img src="${ctx}/resource/ccpt_5_bbh/res/static/img/logo.png"> -->
                     <h3>社区</h3>
                 </a>
             </h1>
@@ -75,28 +75,54 @@
     </div>
 
     <div>
-        <div style="min-height: 600px; width: 600px; margin: auto; padding: 20px;">
+        <div style="min-height: 600px; width: 800px; margin: auto; padding: 20px;">
             <h3>订单详情</h3>
-            <div class="layui-container">
-                <div class="layui-row">
-                    <div class="layui-col-md3">
-                        <h2>${trade}</h2>
-                        <h3>单价：￥${good.price}</h3>
-                        <div class="layui-form-item">
-                            <div class="layui-input-block" style="margin-left: 0px; width: 106px;">
-                                <input type="text" name="num" required lay-verify="required" placeholder="请输入数量"
-                                       autocomplete="off" class="layui-input">
-                            </div>
-                        </div>
-                        <div class="layui-input-block" style="margin-left: 0px;">
-                            <button class="layui-btn" lay-submit lay-filter="formDemo">加入购物车</button>
-                        </div>
+            <ul class="layui-timeline">
+                <li class="layui-timeline-item">
+                    <i class="layui-icon layui-timeline-axis">&#xe63f;</i>
+                    <div class="layui-timeline-content layui-text">
+                        <h3 class="layui-timeline-title">内容</h3>
+                        <p>
+                            ${trade.content}
+                        </p>
                     </div>
-                </div>
-            </div>
+                </li>
+                <li class="layui-timeline-item">
+                    <i class="layui-icon layui-timeline-axis">&#xe63f;</i>
+                    <div class="layui-timeline-content layui-text">
+                        <h3 class="layui-timeline-title">配送地址</h3>
+                        <p>
+                            ${trade.place}
+                        </p>
+                    </div>
+                </li>
+                <li class="layui-timeline-item">
+                    <i class="layui-icon layui-timeline-axis">&#xe63f;</i>
+                    <div class="layui-timeline-content layui-text">
+                        <h3 class="layui-timeline-title">总价</h3>
+                        <p>
+                            ￥${trade.totalPrice}
+                        </p>
+                    </div>
+                </li>
+                <c:if test="${trade.payImg != null}">
+                    <h3>支付码：<img src="${ctx}/resource/uploadImg/${trade.payImg}"
+                                 style="width: 128px; height: 128px;"></h3>
+
+                    <li class="layui-timeline-item">
+                        <i class="layui-icon layui-timeline-axis">&#xe63f;</i>
+                        <div class="layui-timeline-content layui-text">
+                            <h3 class="layui-timeline-title">支付码</h3>
+                            <p>
+                                <img src="${ctx}/resource/uploadImg/${trade.payImg}"
+                                     style="width: 128px; height: 128px;">
+                            </p>
+                        </div>
+                    </li>
+                </c:if>
+            </ul>
         </div>
     </div>
-</div>
 </div>
 
 <div class="footer" style="padding: 0;">

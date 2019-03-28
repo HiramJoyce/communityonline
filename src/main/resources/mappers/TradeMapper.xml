@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.community.online.dao.TradeDao">
+    <resultMap id="tradeMap" type="com.community.online.domain.Trade">
+        <result column="id" property="id"/>
+        <result column="user_id" property="userId"/>
+        <result column="content" property="content"/>
+        <result column="pay_img" property="payImg"/>
+        <result column="place" property="place"/>
+        <result column="total_price" property="totalPrice" javaType="double" jdbcType="DOUBLE"/>
+        <result column="state" property="state"/>
+        <result column="create_time" property="createTime" javaType="java.util.Date" jdbcType="TIMESTAMP"/>
+    </resultMap>
+    <sql id="base_column">
+        id, user_id, content, pay_img, place, total_price, state, create_time
+    </sql>
+
+    <insert id="insertTrade" parameterType="com.community.online.domain.Trade">
+        insert into trade(<include refid="base_column"/>)
+        values
+        (#{id}, #{userId}, #{content}, #{payImg}, #{place}, #{totalPrice}, #{state}, #{createTime});
+    </insert>
+
+    <delete id="deleteTrade">
+        delete from trade where id=#{id}
+    </delete>
+
+    <delete id="updateTradeState">
+        update trade set state=#{state} where id=#{id}
+    </delete>
+
+    <select id="selectTrade" resultMap="tradeMap">
+        select
+        <include refid="base_column"/>
+        from trade where id=#{id};
+    </select>
+
+    <select id="selectTradesByState" resultMap="tradeMap">
+        select
+        <include refid="base_column"/>
+        from trade where state=#{state};
+    </select>
+
+    <select id="selectTrades" resultMap="tradeMap">
+        select
+        <include refid="base_column"/>
+        from trade order by state;
+    </select>
+
+    <select id="selectTradesByUserId" resultMap="tradeMap">
+        select
+        <include refid="base_column"/>
+        from trade where user_id=#{userId};
+    </select>
+
+    <update id="updateTrade" parameterType="com.community.online.domain.Trade">
+        update trade set state=#{state}, pay_img=#{payImg} where id=#{id}
+    </update>
+</mapper>

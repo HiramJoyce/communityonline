@@ -9,12 +9,6 @@
     <title>Document</title>
     <link rel="stylesheet" type="text/css" href="${ctx}/resource/ccpt_5_bbh/res/static/css/main.css">
     <link rel="stylesheet" type="text/css" href="${ctx}/resource/ccpt_5_bbh/res/layui/css/layui.css">
-    <link type="text/css" rel="stylesheet" href="${ctx}/resource/bootstrap-3.3.7-dist/css/bootstrap.min.css"/>
-    <style type="text/css">
-        .layui-form-label {
-            width: 100px;
-        }
-    </style>
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
@@ -94,7 +88,7 @@
                     <div class="layui-form-item">
                         <div class="layui-inline">
                             <label class="layui-form-label">预约时间</label>
-                            <div class="layui-input-inline" style="margin: 10px;">
+                            <div class="layui-input-inline">
                                 <input type="text" class="layui-input" name="time" id="test1" placeholder="yyyy-MM-dd">
                             </div>
                         </div>
@@ -122,7 +116,12 @@
                 </div>
             </form>
             <h3>我的预约订单</h3>
-            <table class="table table-bordered">
+            <table class="layui-table">
+                <colgroup>
+                    <col>
+                    <col width="200">
+                    <col>
+                </colgroup>
                 <thead>
                 <tr>
                     <th class="node">标题</th>
@@ -132,7 +131,7 @@
                     <th class="process">状态</th>
                 </tr>
                 </thead>
-                <tbody align="center">
+                <tbody>
                 <c:forEach items="${services}" var="student">
                     <tr align="center">
                         <td><a href="${ctx}/finishService?id=${student.id}">${student.title}</a></td>
@@ -140,7 +139,7 @@
                         <td>${student.place}</td>
                         <td>${student.price}</td>
                         <td class="operate">
-                            ${student.state == "0" ? "待审核" : student.state == "1" ? "待服务人员接单" : student.state == "2" ? "已接单" : "处理完成"}
+                                ${student.state == "0" ? "待审核" : student.state == "1" ? "待服务人员接单" : student.state == "2" ? "已接单" : "处理完成"}
                         </td>
                     </tr>
                 </c:forEach>

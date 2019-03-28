@@ -19,4 +19,8 @@ public interface TradeDao {
     List<Trade> selectTrades();
 
     List<Trade> selectTradesByUserId(String userId);
+
+    List<Trade> selectTradesByState(String state);
+
+    int updateTrade(Trade trade);
 }

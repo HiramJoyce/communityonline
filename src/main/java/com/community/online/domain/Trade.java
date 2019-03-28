@@ -5,9 +5,10 @@ import java.util.Date;
 public class Trade {
 	private String id;
 	private String content;	// goodId*name*price*num~goodId*name*price*num...
-	private String totalPrice;
+	private double totalPrice;
 	private String place;
 	private String payImg;
+	private String userId;
 	private String state;	// 0 未设置img 1 设置img
 	private Date createTime;
 	public String getId() {
@@ -23,11 +24,11 @@ public class Trade {
 		this.content = content;
 	}
 
-	public String getTotalPrice() {
+	public double getTotalPrice() {
 		return totalPrice;
 	}
 
-	public void setTotalPrice(String totalPrice) {
+	public void setTotalPrice(double totalPrice) {
 		this.totalPrice = totalPrice;
 	}
 
@@ -43,7 +44,16 @@ public class Trade {
 	public void setPayImg(String payImg) {
 		this.payImg = payImg;
 	}
-	public String getState() {
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+
+    public String getState() {
 		return state;
 	}
 	public void setState(String state) {
@@ -57,4 +67,18 @@ public class Trade {
 	public void setCreateTime(Date createTime) {
 		this.createTime = createTime;
 	}
+
+    @Override
+    public String toString() {
+        return "Trade{" +
+                "id='" + id + '\'' +
+                ", content='" + content + '\'' +
+                ", totalPrice=" + totalPrice +
+                ", place='" + place + '\'' +
+                ", payImg='" + payImg + '\'' +
+                ", userId='" + userId + '\'' +
+                ", state='" + state + '\'' +
+                ", createTime=" + createTime +
+                '}';
+    }
 }

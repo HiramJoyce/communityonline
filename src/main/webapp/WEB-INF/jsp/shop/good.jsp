@@ -11,7 +11,6 @@
           href="${ctx}/resource/ccpt_5_bbh/res/static/css/main.css">
     <link rel="stylesheet" type="text/css"
           href="${ctx}/resource/ccpt_5_bbh/res/layui/css/layui.css">
-    <link type="text/css" rel="stylesheet" href="${ctx}/resource/bootstrap-3.3.7-dist/css/bootstrap.min.css"/>
     <script type="text/javascript"
             src="${ctx}/resource/ccpt_5_bbh/res/layui/layui.js"></script>
     <meta name="viewport"

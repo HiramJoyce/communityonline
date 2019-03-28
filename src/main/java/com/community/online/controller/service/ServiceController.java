@@ -53,7 +53,7 @@ public class ServiceController {
             model.addAttribute("error","发布错误");
             return "service";
         }
-        return "redirect:/";
+        return "redirect:/service";
     }
 
     @RequestMapping("/servicesPage")

@@ -75,30 +75,23 @@
         </div>
     </div>
     <div>
-        <div style="min-height: 600px; width: 600px; margin: auto; padding: 20px;">
-            <table class="layui-table" lay-size="lg">
-                <%--<colgroup>--%>
-                    <%--<col width="150">--%>
-                    <%--<col width="50">--%>
-                    <%--<col>--%>
-                <%--</colgroup>--%>
-                <thead>
-                <tr>
-                    <th>标题</th>
-                    <th width="50">用户</th>
-                    <th width="140">发布时间</th>
-                </tr>
-                </thead>
-                <tbody>
+        <div style="min-height: 600px; width: 800px; margin: auto; padding: 20px;">
+            <ul class="layui-timeline">
                 <c:forEach items="${helps}" var="help">
-                    <tr>
-                        <td><a href="${ctx}/help/detail?id=${help.id}">${f:substring(help.title, 0, 20)}...</a></td>
-                        <td width="50">${help.realName}</td>
-                        <td><fmt:formatDate value="${help.createTime}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
-                    </tr>
+                    <li class="layui-timeline-item">
+                        <i class="layui-icon layui-timeline-axis">&#xe63f;</i>
+                        <div class="layui-timeline-content layui-text">
+                            <h3 class="layui-timeline-title"><a href="${ctx}/help/detail?id=${help.id}">${f:substring(help.title, 0, 20)}...</a></h3>
+                            <p>
+                                ${help.content}
+                                <br>${help.realName}
+                                <br>${help.createTime}<i class="layui-icon"></i>
+                            </p>
+                        </div>
+                    </li>
                 </c:forEach>
-                </tbody>
-            </table>
+            </ul>
+            <hr class="layui-bg-green">
             <form action="${ctx}/help/create" method="post" enctype="multipart/form-data">
                 <div class="layui-form-item">
                     <label class="layui-form-label">标题</label>

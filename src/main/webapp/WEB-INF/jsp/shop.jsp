@@ -44,7 +44,7 @@
     <div class="headerLayout w1200">
         <div class="headerCon">
             <h1 class="mallLogo">
-                <a href="#" title="母婴商城"> <!-- <img src="${ctx}/resource/ccpt_5_bbh/res/static/img/logo.png"> -->
+                <a href="#" title=""> <!-- <img src="${ctx}/resource/ccpt_5_bbh/res/static/img/logo.png"> -->
                     <h3>社区</h3>
                 </a>
             </h1>
@@ -97,6 +97,49 @@
                 </c:forEach>
             </div>
         </div>
+    </div>
+    <div style="width: 800px; margin: auto; padding: 20px;">
+        <h3>我的订单</h3>
+        <form id="allStudents" action="${ctx}/deleteTrade" method="post">
+            <table class="layui-table">
+                <colgroup>
+                    <col>
+                    <col width="200">
+                    <col>
+                </colgroup>
+                <thead>
+                <tr>
+                    <th class="name" width="70">详情</th>
+                    <th class="name">总价</th>
+                    <th class="node">配送地址</th>
+                    <th class="node">支付码</th>
+                    <th class="node">状态</th>
+                    <th class="operate">操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                <c:forEach items="${trades}" var="trade">
+                    <tr align="center">
+                        <input type="hidden" name="id" value="${trade.id}"/>
+                        <td><a href="${ctx}/tradeInfo?id=${trade.id}">${trade.content}</a></td>
+                        <td>${trade.totalPrice}</td>
+                        <td>${trade.place}</td>
+                        <td><c:if test="${trade.payImg != null}"><img src="${ctx}/resource/uploadImg/${trade.payImg}" style="width: 64px; height: 64px;"></c:if></td>
+                        <td>${trade.state == "0" ? "待接单" : trade.state == "1" ? "待支付" : trade.state == "2" ? "待确认" : trade.state == "3" ? "配送中" :"已完成"}</td>
+                        <td class="operate">
+                            <c:if test="${trade.state == '1'}">
+                                <a href="${ctx}/payTrade?id=${trade.id}" class="del">支付完成</a>
+                            </c:if>
+                            <c:if test="${trade.state == '3'}">
+                                <a href="${ctx}/finishTrade?id=${trade.id}" class="del">交易完成</a>
+                            </c:if>
+                            <a href="${ctx}/deleteTrade?id=${trade.id}" class="del">删除</a>
+                        </td>
+                    </tr>
+                </c:forEach>
+                </tbody>
+            </table>
+        </form>
     </div>
 </div>
 

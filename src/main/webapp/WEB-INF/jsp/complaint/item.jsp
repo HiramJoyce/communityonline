@@ -39,6 +39,7 @@
             <c:if test="${sessionScope.id != null}">
                 <div class="login">
                     <a href="${ctx}/logout">${sessionScope.realName}</a>
+                    <a href="${ctx}/car">购物车</a>
                 </div>
             </c:if>
         </div>
@@ -50,7 +51,7 @@
     <div class="headerLayout w1200">
         <div class="headerCon">
             <h1 class="mallLogo">
-                <a href="#" title="母婴商城"> <!-- <img src="${ctx}/resource/ccpt_5_bbh/res/static/img/logo.png"> -->
+                <a href="#" title=""> <!-- <img src="${ctx}/resource/ccpt_5_bbh/res/static/img/logo.png"> -->
                     <h3>社区</h3>
                 </a>
             </h1>

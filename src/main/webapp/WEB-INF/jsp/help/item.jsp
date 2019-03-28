@@ -39,6 +39,7 @@
             <c:if test="${sessionScope.id != null}">
                 <div class="login">
                     <a href="${ctx}/logout">${sessionScope.realName}</a>
+                    <a href="${ctx}/car">购物车</a>
                 </div>
             </c:if>
         </div>
@@ -79,12 +80,12 @@
             </div>
         </div>
     </div>
-    <div style="min-height: 600px; width: 600px; margin: auto; padding: 20px;">
+    <div style="min-height: 600px; width: 800px; margin: auto; padding: 20px;">
         <a href="${ctx}/help">返回</a>
-        <div style="width: 700px; margin: auto;">
+        <div style="width: 800px; margin: auto;">
             <h3 class="media-heading">详情</h3>
         </div>
-        <div style="width: 700px; margin: auto; border: 1px gray solid; border-radius: 5px;">
+        <div style="width: 800px; margin: auto; border: 1px gray solid; border-radius: 5px;">
             <div style="padding: 5px 5px 5px 10px;">
                 <span style="color: gray; font-size: 13px;" class="media-heading">${complaint.userId} - <fmt:formatDate
                         value="${complaint.createTime}" pattern="yyyy-MM-dd HH:mm:ss"/></span>
@@ -117,7 +118,7 @@
                 <div style="clear: both;"></div>
             </div>
         </div>
-        <div style="width: 700px; margin: auto; border: 1px gray solid; border-radius: 5px; padding: 20px; margin-top: 20px;">
+        <div style="width: 800px; margin: auto; border: 1px gray solid; border-radius: 5px; padding: 20px; margin-top: 20px;">
             <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal">回复</button>
             <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                 <div class="modal-dialog" role="document">

@@ -42,4 +42,19 @@ public class TradeServiceImpl implements TradeService {
     public List<Trade> getAllTrades() {
         return tradeDao.selectTrades();
     }
+
+    @Override
+    public List<Trade> get0Trades() {
+        return tradeDao.selectTradesByState("0");
+    }
+
+    @Override
+    public int updateTrade(Trade trade) {
+        return tradeDao.updateTrade(trade);
+    }
+
+    @Override
+    public int delete(String id) {
+        return tradeDao.deleteTrade(id);
+    }
 }
