@@ -27,11 +27,13 @@
             <c:if test="${sessionScope.id == null}">
                 <div class="login">
                     <a href="${ctx}/login">登录</a>
+                    <a href="${ctx}/register">注册</a>
                 </div>
             </c:if>
             <c:if test="${sessionScope.id != null}">
                 <div class="login">
-                    <a href="${ctx}/logout">${sessionScope.realName}</a>
+                    <a href="${ctx}/studentInfo">${sessionScope.realName}</a>
+                    <a href="${ctx}/logout">注销</a>
                     <a href="${ctx}/car">购物车</a>
                 </div>
             </c:if>

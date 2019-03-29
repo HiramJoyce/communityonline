@@ -37,17 +37,32 @@ public class StudentController {
     }
 
     @RequestMapping("/studentRegister")
-    public String studentRegister(String studentNum, String userName, String realName, String password, String chapter, String section, Model model, HttpServletRequest request) {
+    public String studentRegister(String id, String studentNum, String userName, String realName, String password, String chapter, String section, Model model, HttpServletRequest request) {
         System.out.println("-> student register : " + userName + " - " + password + " - " + realName);
-        Student student = studentService.register(studentNum, userName, realName, password, chapter, section);
-        if (student == null) {
-            model.addAttribute("error","注册失败错误");
-            return "index";
+        if (id != null) {
+            Student studentById = studentService.getStudentById(id);
+            studentById.setStudentNum(studentNum);
+            studentById.setUserName(userName);
+            studentById.setRealName(realName);
+            studentById.setPassword(password);
+            studentById.setChapter(chapter);
+            studentById.setSection(section);
+            studentService.updateStudent(studentById);
+            request.getSession().setAttribute("id", studentById.getId());
+            request.getSession().setAttribute("realName", studentById.getRealName());
+            request.getSession().setAttribute("role", "student");
+            return "redirect:/studentInfo";
+        } else {
+            Student student = studentService.register(studentNum, userName, realName, password, chapter, section);
+            if (student == null) {
+                model.addAttribute("error","注册失败错误");
+                return "index";
+            }
+            request.getSession().setAttribute("id", student.getId());
+            request.getSession().setAttribute("realName", student.getRealName());
+            request.getSession().setAttribute("role", "student");
+            return "redirect:/";
         }
-        request.getSession().setAttribute("id", student.getId());
-        request.getSession().setAttribute("realName", student.getRealName());
-        request.getSession().setAttribute("role", "student");
-        return "redirect:/";
     }
 
     @RequestMapping("/studentInfo")
@@ -56,7 +71,7 @@ public class StudentController {
         Student student = studentService.getStudentById((String) request.getSession().getAttribute("id"));
         if (student != null) {
             model.addAttribute("student", student);
-            return "student/studentInfo";
+            return "student/student";
         }
         return "redirect:/";
     }

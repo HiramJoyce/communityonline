@@ -75,38 +75,66 @@
 		</div>
 		<div class="login-bg">
 			<div class="login-cont w1200">
-				<div class="form-box">
-					<form class="layui-form" action="${ctx}/studentLogin">
-						<legend>用户名登录</legend>
+				<div class="form-box" style="height: auto; top: 66px;">
+					<form class="layui-form" action="${ctx}/studentRegister">
+						<legend>用户注册</legend>
 						<div class="layui-form-item">
 							<div class="layui-inline iphone">
 								<div class="layui-input-inline">
 									<i class="layui-icon layui-icon-username iphone-icon"></i> <input
-										type="tel" name="userName" id="phone" lay-verify="required"
+										type="tel" name="userName" id="userName" lay-verify="required"
 										placeholder="请输入用户名" autocomplete="off" class="layui-input">
 								</div>
 							</div>
 							<div class="layui-inline iphone">
 								<div class="layui-input-inline">
-                                    <i class="layui-icon layui-icon-username iphone-icon"></i> <input
+									<i class="layui-icon layui-icon-auz iphone-icon"></i> <input
+										type="tel" name="realName" id="realName" lay-verify="required"
+										placeholder="请输入姓名" autocomplete="off" class="layui-input">
+								</div>
+							</div>
+							<div class="layui-inline iphone">
+								<div class="layui-input-inline">
+									<i class="layui-icon layui-icon-file-b iphone-icon"></i> <input
+										type="tel" name="studentNum" id="student_num" lay-verify="required"
+										placeholder="请输入用户编号" autocomplete="off" class="layui-input">
+								</div>
+							</div>
+							<div class="layui-inline iphone">
+								<div class="layui-input-inline">
+                                    <i class="layui-icon layui-icon-password iphone-icon"></i> <input
                                         id="pnum" type="password" name="password" lay-verify="required"
 										placeholder="请输入密码" autocomplete="off" class="layui-input">
+								</div>
+							</div>
+							<div class="layui-inline iphone">
+								<div class="layui-input-inline">
+									<i class="layui-icon layui-icon-password iphone-icon"></i> <input
+										id="pnum2" type="password" name="password2" lay-verify="required"
+										placeholder="请确认密码" autocomplete="off" class="layui-input">
+								</div>
+							</div>
+							<div class="layui-inline iphone">
+								<div class="layui-input-inline">
+									<i class="layui-icon layui-icon-component iphone-icon"></i> <input
+										id="chapter" type="text" name="chapter" lay-verify="required"
+										placeholder="请输入楼号" autocomplete="off" class="layui-input">
+								</div>
+							</div>
+							<div class="layui-inline iphone">
+								<div class="layui-input-inline">
+									<i class="layui-icon layui-icon-location iphone-icon"></i> <input
+										id="section" type="text" name="section" lay-verify="required"
+										placeholder="请确认单元" autocomplete="off" class="layui-input">
 								</div>
 							</div>
 						</div>
 						<div class="layui-form-item login-btn">
 							<div class="layui-input-block">
 								<button class="layui-btn" lay-submit="" lay-filter="demo1"
-									type="submit">登录</button>
+									type="submit">注册</button>
 							</div>
 						</div>
-                        <div class="layui-form-item login-btn">
-                            <div class="layui-input-block" style="text-align: center;">
-                                <a href="${ctx}/admin/login">我是管理员</a>
-                                <a href="${ctx}/waiter/login">我是服务人员</a>
-                                <a href="${ctx}/shop/login">我是便利店</a>
-                            </div>
-                        </div>
 					</form>
 				</div>
 			</div>

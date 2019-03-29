@@ -7,8 +7,12 @@
 <head>
     <meta charset="UTF-8">
     <title>Document</title>
-    <link rel="stylesheet" type="text/css" href="${ctx}/resource/ccpt_5_bbh/res/static/css/main.css">
-    <link rel="stylesheet" type="text/css" href="${ctx}/resource/ccpt_5_bbh/res/layui/css/layui.css">
+    <link rel="stylesheet" type="text/css"
+          href="${ctx}/resource/ccpt_5_bbh/res/static/css/main.css">
+    <link rel="stylesheet" type="text/css"
+          href="${ctx}/resource/ccpt_5_bbh/res/layui/css/layui.css">
+    <script type="text/javascript"
+            src="${ctx}/resource/ccpt_5_bbh/res/layui/layui.js"></script>
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
@@ -37,6 +41,7 @@
     </div>
 </div>
 
+
 <div class="header">
     <div class="headerLayout w1200">
         <div class="headerCon">
@@ -64,89 +69,66 @@
             <div class="inner-cont1 w1200">
                 <div class="inner-cont2">
                     <a href="${ctx}/">便利店在线</a> <a href="${ctx}/service"
-                                                   class="active">预约服务</a> <a href="${ctx}/help">求助交流</a> <a
+                >预约服务</a> <a href="${ctx}/help">求助交流</a> <a
                         href="${ctx}/advice">投诉与建议</a>
                 </div>
             </div>
         </div>
     </div>
+
     <div>
-        <div style="min-height: 600px; width: 600px; margin: auto; padding: 20px;">
-            <form action="${ctx}/serviceCreate" method="post">
+        <div style="min-height: 600px; width: 800px; margin: auto; padding: 20px;">
+            <h2>个人信息</h2>
+            <form action="${ctx}/studentRegister" method="post">
+                <input type="hidden" name="id" value="${student.id}">
                 <div class="layui-form-item">
-                    <label class="layui-form-label">标题</label>
+                    <label class="layui-form-label">用户名</label>
                     <div class="layui-input-block">
-                        <input type="text" name="title" required lay-verify="required" placeholder="请输入标题"
-                               autocomplete="off" class="layui-input">
-                    </div>
-                </div>
-                <div class="layui-form-item layui-form-text">
-                    <label class="layui-form-label">服务说明</label>
-                    <div class="layui-input-block">
-                        <textarea placeholder="请输入内容" name="content" class="layui-textarea"></textarea>
-                    </div>
-                </div>
-                <div class="layui-form">
-                    <div class="layui-form-item">
-                        <div class="layui-inline">
-                            <label class="layui-form-label">预约时间</label>
-                            <div class="layui-input-inline">
-                                <input type="text" class="layui-input" name="time" id="test1" placeholder="yyyy-MM-dd">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="layui-form-item">
-                    <label class="layui-form-label">预约地点</label>
-                    <div class="layui-input-block">
-                        <input type="text" name="place" required lay-verify="required" placeholder="请输入预约地点"
+                        <input type="text" name="userName" value="${student.userName}" required lay-verify="required" placeholder="${student.userName}"
                                autocomplete="off" class="layui-input">
                     </div>
                 </div>
                 <div class="layui-form-item">
-                    <label class="layui-form-label">价格</label>
+                    <label class="layui-form-label">姓名</label>
                     <div class="layui-input-block">
-                        <input type="text" name="price" required lay-verify="required" placeholder="请输入价格"
+                        <input type="text" name="realName" value="${student.realName}" required lay-verify="required" placeholder="${student.realName}"
+                               autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">用户编号</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="studentNum" value="${student.studentNum}" required lay-verify="required" placeholder="${student.studentNum}"
+                               autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">密码</label>
+                    <div class="layui-input-block">
+                        <input type="password" name="password" value="${student.password}" required lay-verify="required"
+                               autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">楼号</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="chapter" value="${student.chapter}" required lay-verify="required"
+                               autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">单元号</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="section" value="${student.section}" required lay-verify="required"
                                autocomplete="off" class="layui-input">
                     </div>
                 </div>
                 <div class="layui-form-item">
                     <div class="layui-input-block">
-                        <button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
-                        <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                        <button class="layui-btn" lay-submit lay-filter="formDemo">保存</button>
                     </div>
                 </div>
             </form>
-            <h3>我的预约订单</h3>
-            <table class="layui-table">
-                <colgroup>
-                    <col>
-                    <col width="200">
-                    <col>
-                </colgroup>
-                <thead>
-                <tr>
-                    <th class="node">标题</th>
-                    <th class="process">时间</th>
-                    <th class="process">地点</th>
-                    <th class="process">价格</th>
-                    <th class="process">状态</th>
-                </tr>
-                </thead>
-                <tbody>
-                <c:forEach items="${services}" var="student">
-                    <tr align="center">
-                        <td><a href="${ctx}/finishService?id=${student.id}">${student.title}</a></td>
-                        <td><fmt:formatDate value="${student.time}" pattern="yyyy-MM-dd"/></td>
-                        <td>${student.place}</td>
-                        <td>${student.price}</td>
-                        <td class="operate">
-                                ${student.state == "0" ? "待审核" : student.state == "1" ? "待服务人员接单" : student.state == "2" ? "已接单" : "处理完成"}
-                        </td>
-                    </tr>
-                </c:forEach>
-                </tbody>
-            </table>
         </div>
     </div>
 </div>
@@ -160,15 +142,37 @@
         </p>
     </div>
 </div>
-<script src="${ctx}/resource/ccpt_5_bbh/res/layui/layui.all.js"></script>
-<script>
-    layui.use('laydate', function () {
-        var laydate = layui.laydate;
+<script type="text/javascript">
+    layui.config({
+        base: '${ctx}/resource/ccpt_5_bbh/res/static/js/util/' //你存放新模块的目录，注意，不是layui的模块目录
+    }).use(['mm', 'carousel'], function () {
+        var carousel = layui.carousel, mm = layui.mm;
+        var option = {
+            elem: '#test1',
+            width: '100%' //设置容器宽度
+            ,
+            arrow: 'always',
+            height: '298',
+            indicator: 'none'
+        }
+        carousel.render(option);
+        // 模版引擎导入
+        // var ins = carousel.render(option);
+        // var html = demo.innerHTML;
+        // var listCont = document.getElementById('list-cont');
+        // // console.log(layui.router("#/about.html"))
+        //  mm.request({
+        //    url: '${ctx}/resource/ccpt_5_bbh/json/index.json',
+        //    success : function(res){
+        //      console.log(res)
+        //      listCont.innerHTML = mm.renderHtml(html,res)
+        //      ins.reload(option);
+        //    },
+        //    error: function(res){
+        //      console.log(res);
+        //    }
+        //  })
 
-        //执行一个laydate实例
-        laydate.render({
-            elem: '#test1' //指定元素
-        });
     });
 </script>
 </body>
